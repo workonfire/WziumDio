@@ -14,7 +14,7 @@
     <div class="header">
         <span id="wzium">Wzium</span><span id="dio">Dio</span>
     </div>
-    <p class="info">Sprawdź, co będzie grane!</p>
+    <p class="info">📻 Sprawdź, co będzie grane!</p>
 
     <form action="index.php" method="get">
         <p id="select_radio">
