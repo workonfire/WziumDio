@@ -10,14 +10,14 @@ hr {
     border-color: #6b6b6b;
 }
 
-div.header {
+.header {
     text-align: center;
     font-family: "Courier New", serif;
     font-weight: bold;
     font-size: 40px;
 }
 
-p.info {
+.info {
     font-style: italic;
     color: #9b9b9b;
 }
@@ -46,33 +46,39 @@ input[type=submit] {
     border-radius: 5px;
 }
 
-img.albumart {
+.albumart {
     width: 125px;
     margin-right: 10px;
 }
 
-div.songinfo {
+.songinfo {
     font-size: 20px;
     font-family: "Verdana", serif;
     display: inline-flex;
     text-align: left;
 }
 
-span.title {
+.title {
     font-weight: bold;
 }
 
-span.author {
+.author {
     font-style: italic;
     font-weight: bold;
     color: #9b9b9b;
 }
 
-span.album {
+.album {
     font-style: italic;
     color: #9b9b9b;
 }
 
-div.footer {
+.footer {
     color: #5d5d5d;
+}
+
+.now_playing {
+    color: #1fc41d;
+    font-weight: bold;
+    font-size: 25px;
 }

@@ -40,8 +40,9 @@
             switch ($radio_station) {
                 case "rmf_fm":
                     foreach ($data as $song) {
-                        $song->lenght = $song->lenght != '' ? gmdate('i:s', $song->lenght) : $song->lenght;
+                        $song->lenght = $song->lenght != '' ? '⌛ '.gmdate('i:s', $song->lenght) : $song->lenght;
                         $song->coverUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverUrl;
+                        if ($song->order == 0) echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
                         echo "
                             <div class='songinfo'>
                                 <img src='{$song->coverUrl}' class='albumart' alt='albumart' />
@@ -50,7 +51,7 @@
                                     <span class='author'>{$song->author}</span> <br>
                                     <span class='album'>{$song->recordTitle}</span> <br>
                                     <span class='length'>{$song->lenght}</span> <br> <!-- Yup, it's a typo. -->
-                                    <span class='start'>Start o <b>{$song->start}</b></span> <br>
+                                    <span class='start'>▶ <b>{$song->start}</b></span> <br>
                                 </div>
                             </div>
                             <hr>
@@ -58,6 +59,7 @@
                     }
                     break;
                 case "zlote_przeboje":
+                    echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
                     foreach ($data as $song) {
                         echo "
                             <div class='songinfo'>
