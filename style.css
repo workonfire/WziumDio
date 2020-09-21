@@ -1,0 +1,77 @@
+body {
+    background-color: #111111;
+    color: white;
+    font-family: "Consolas", serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+hr {
+    border-color: #6b6b6b;
+}
+
+div.header {
+    text-align: center;
+    font-family: "Courier New", serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+p.info {
+    font-style: italic;
+    color: #9b9b9b;
+}
+
+#wzium {
+    background: red;
+    background: -webkit-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#dio {
+    font-weight: bold;
+    color: white;
+}
+
+input[type=submit] {
+    padding: 5px 15px;
+    background: #ccc;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+img.albumart {
+    width: 125px;
+    margin-right: 10px;
+}
+
+div.songinfo {
+    font-size: 20px;
+    font-family: "Verdana", serif;
+    display: inline-flex;
+}
+
+span.title {
+    font-weight: bold;
+}
+
+span.author {
+    font-style: italic;
+    font-weight: bold;
+    color: #9b9b9b;
+}
+
+span.album {
+    font-style: italic;
+    color: #9b9b9b;
+}
+
+div.footer {
+    color: #5d5d5d;
+}
