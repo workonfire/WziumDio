@@ -20,8 +20,16 @@
         <p id="select_radio">
             <label for="radio_stations">Stacja radiowa:</label>
             <select id="radio_stations" name="radio_station">
-                <option value="rmf_fm">RMF FM</option>
-                <option value="zlote_przeboje">Złote Przeboje</option>
+                <option value="rmf_fm" <?php
+                    echo isset($_GET['radio_station']) && $_GET['radio_station'] == 'rmf_fm'
+                        ? "selected=\"selected\""
+                        : ''
+                ?>>RMF FM</option>
+                <option value="zlote_przeboje" <?php
+                    echo isset($_GET['radio_station']) && $_GET['radio_station'] == 'zlote_przeboje'
+                        ? "selected=\"selected\""
+                        : ''
+                ?>>Złote Przeboje</option>
             </select>
             <br> <br>
             <input type="submit" value="Sprawdź!">
@@ -32,8 +40,16 @@
         if (isset($_GET['radio_station'])) {
             $radio_station = $_GET['radio_station'];
 
-            if ($radio_station == "rmf_fm") $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt";
-            else $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8936";
+            switch ($radio_station) {
+                case "rmf_fm":
+                    $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt";
+                    break;
+                case "zlote_przeboje":
+                    $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8936";
+                    break;
+                default:
+                    $data_link = null;
+            }
 
             $data = json_decode(file_get_contents($data_link));
 
