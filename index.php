@@ -21,7 +21,7 @@
             <label for="radio_stations">Stacja radiowa:</label>
             <select id="radio_stations" name="radio_station">
                 <option value="rmf_fm">RMF FM</option>
-                <option value="zlote_przeboje">Złote Przeboje Warszawa</option>
+                <option value="zlote_przeboje">Złote Przeboje</option>
             </select>
             <br> <br>
             <input type="submit" value="Sprawdź!">
