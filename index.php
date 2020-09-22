@@ -5,7 +5,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>WziumDio</title>
+    <title>WziumDio <?php
+            if (isset($_GET['radio_station'])) {
+                switch ($_GET['radio_station']) {
+                    case "rmf_fm":
+                        $full_radio_name = "RMF FM"; break;
+                    case "zlote_przeboje":
+                        $full_radio_name = "Złote Przeboje"; break;
+                }
+                echo isset($full_radio_name) ? "- ".$full_radio_name : '';
+            }
+        ?></title>
     <link rel="icon" type="image/png" href="assets/icon.png"/>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,23 +32,19 @@
             <label for="radio_stations">Stacja radiowa:</label>
             <select id="radio_stations" name="radio_station">
                 <option value="rmf_fm" <?php
-                    echo isset($_GET['radio_station']) && $_GET['radio_station'] == 'rmf_fm'
-                        ? 'selected="selected"'
-                        : ''
+                    if (isset($_GET['radio_station']))
+                        echo $_GET['radio_station'] == 'rmf_fm' ? 'selected="selected"' : '';
                 ?>>RMF FM</option>
                 <option value="zlote_przeboje" <?php
-                    echo isset($_GET['radio_station']) && $_GET['radio_station'] == 'zlote_przeboje'
-                        ? 'selected="selected"'
-                        : ''
+                    if (isset($_GET['radio_station']))
+                        echo $_GET['radio_station'] == 'zlote_przeboje' ? 'selected="selected"' : '';
                 ?>>Złote Przeboje</option>
             </select>
         </p>
         <div>
             <input type="checkbox" id="wanna_listen" name="wanna_listen"
                 <?php
-                    echo isset($_GET['wanna_listen'])
-                        ? 'checked="checked"'
-                        : ''
+                    echo isset($_GET['wanna_listen']) ? 'checked="checked"' : '';
                 ?>>
             <label for="wanna_listen">Chcę posłuchać!</label>
         </div>
@@ -53,26 +59,43 @@
 
             switch ($radio_station) {
                 case "rmf_fm":
-                    $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt";
-                    break;
+                    $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt"; break;
                 case "zlote_przeboje":
-                    $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8936";
-                    break;
+                    $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8936"; break;
                 default:
                     $data_link = null;
             }
 
             $data = json_decode(file_get_contents($data_link));
-            $now_playing = "▶ TERAZ GRANE";
+            $now_playing = "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
+
+            function showPlayer($radio_station) {
+                switch ($radio_station) {
+                    case "rmf_fm":
+                        $player_link = "http://31.192.216.8/rmf_fm"; break;
+                    case "zlote_przeboje":
+                        $player_link = "https://pl2-play.adtonos.com/zote-przeboje"; break;
+                    default:
+                        $player_link = '';
+                }
+                echo "<audio id='player' controls autoplay src='{$player_link}'></audio> <br><br>";
+                echo "
+                    <script>
+                        let audio = document.getElementById('player');
+                        audio.volume = 0.5;
+                    </script>
+                ";
+            }
+
+            if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
+                showPlayer($radio_station);
 
             switch ($radio_station) {
                 case "rmf_fm":
-                    if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
-                        echo '<audio controls autoplay src="http://31.192.216.8/rmf_fm"></audio> <br><br>';
                     foreach ($data as $song) {
                         $song->lenght = $song->lenght != '' ? '⌛ '.gmdate('i:s', $song->lenght) : $song->lenght;
                         $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
-                        if ($song->order == 0) echo "<span class='now_playing'>{$now_playing}</span><br><br>";
+                        if ($song->order == 0) echo $now_playing;
                         echo "
                             <div class='songinfo'>
                                 <img src='{$song->coverBigUrl}' class='albumart' alt='albumart' />
@@ -89,9 +112,7 @@
                     }
                     break;
                 case "zlote_przeboje":
-                    if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
-                        echo '<audio controls autoplay src="https://pl2-play.adtonos.com/zote-przeboje"></audio> <br><br>';
-                    echo "<span class='now_playing'>{$now_playing}</span><br><br>";
+                    echo $now_playing;
                     foreach ($data as $song) {
                         echo "
                             <div class='songinfo'>
