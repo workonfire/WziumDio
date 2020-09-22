@@ -8,6 +8,7 @@
     <title>WziumDio</title>
     <link rel="icon" type="image/png" href="assets/icon.png"/>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -52,16 +53,17 @@
             }
 
             $data = json_decode(file_get_contents($data_link));
+            $now_playing = "▶ TERAZ GRANE";
 
             switch ($radio_station) {
                 case "rmf_fm":
                     foreach ($data as $song) {
                         $song->lenght = $song->lenght != '' ? '⌛ '.gmdate('i:s', $song->lenght) : $song->lenght;
-                        $song->coverUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverUrl;
-                        if ($song->order == 0) echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
+                        $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
+                        if ($song->order == 0) echo "<span class='now_playing'>{$now_playing}</span><br><br>";
                         echo "
                             <div class='songinfo'>
-                                <img src='{$song->coverUrl}' class='albumart' alt='albumart' />
+                                <img src='{$song->coverBigUrl}' class='albumart' alt='albumart' />
                                 <div>
                                     <span class='title'>{$song->title}</span> <br>
                                     <span class='author'>{$song->author}</span> <br>
@@ -75,7 +77,7 @@
                     }
                     break;
                 case "zlote_przeboje":
-                    echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
+                    echo "<span class='now_playing'>{$now_playing}</span><br><br>";
                     foreach ($data as $song) {
                         echo "
                             <div class='songinfo'>

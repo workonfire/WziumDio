@@ -8,6 +8,7 @@ body {
 
 hr {
     border-color: #484848;
+    width: 350px;
 }
 
 .header {
@@ -51,6 +52,9 @@ input[type=submit] {
 
 .albumart {
     width: 125px;
+    min-width: auto;
+    min-height: auto;
+    object-fit: scale-down;
     margin-right: 10px;
 }
 
@@ -59,6 +63,8 @@ input[type=submit] {
     font-family: "Verdana", serif;
     display: inline-flex;
     text-align: left;
+    width: 350px;
+    word-wrap: break-word;
 }
 
 .title {
@@ -81,9 +87,24 @@ input[type=submit] {
 }
 
 .now_playing {
-    color: #1fc41d;
+    color: lime;
     font-weight: bold;
+    font-family: Arial, serif;
     font-size: 25px;
+    -webkit-animation: pulsate 2s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0.5;
+    }
 }
 
 #footerlink {
