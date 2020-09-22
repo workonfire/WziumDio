@@ -66,7 +66,7 @@
                                     <span class='title'>{$song->title}</span> <br>
                                     <span class='author'>{$song->author}</span> <br>
                                     <span class='album'>{$song->recordTitle}</span> <br>
-                                    <span class='length'>{$song->lenght}</span> <br> <!-- Yup, it's a typo. -->
+                                    <span class='length'>{$song->lenght}</span> <br>
                                     <span class='start'>▶ <b>{$song->start}</b></span> <br>
                                 </div>
                             </div>

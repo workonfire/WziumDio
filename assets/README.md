@@ -1,0 +1,1 @@
+`icon.png` gathered from [Icons8](https://icons8.com/).
