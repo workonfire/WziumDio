@@ -23,18 +23,28 @@
             <select id="radio_stations" name="radio_station">
                 <option value="rmf_fm" <?php
                     echo isset($_GET['radio_station']) && $_GET['radio_station'] == 'rmf_fm'
-                        ? "selected=\"selected\""
+                        ? 'selected="selected"'
                         : ''
                 ?>>RMF FM</option>
                 <option value="zlote_przeboje" <?php
                     echo isset($_GET['radio_station']) && $_GET['radio_station'] == 'zlote_przeboje'
-                        ? "selected=\"selected\""
+                        ? 'selected="selected"'
                         : ''
                 ?>>Złote Przeboje</option>
             </select>
-            <br> <br>
-            <input type="submit" value="Sprawdź!">
         </p>
+        <div>
+            <input type="checkbox" id="wanna_listen" name="wanna_listen"
+                <?php
+                    echo isset($_GET['wanna_listen'])
+                        ? 'checked="checked"'
+                        : ''
+                ?>>
+            <label for="wanna_listen">Chcę posłuchać!</label>
+        </div>
+        <br>
+        <input type="submit" value="Sprawdź!">
+        <br> <br>
     </form>
 
     <?php
@@ -57,6 +67,8 @@
 
             switch ($radio_station) {
                 case "rmf_fm":
+                    if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
+                        echo '<audio controls autoplay src="http://31.192.216.8/rmf_fm"></audio> <br><br>';
                     foreach ($data as $song) {
                         $song->lenght = $song->lenght != '' ? '⌛ '.gmdate('i:s', $song->lenght) : $song->lenght;
                         $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
@@ -77,6 +89,8 @@
                     }
                     break;
                 case "zlote_przeboje":
+                    if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
+                        echo '<audio controls autoplay src="https://pl2-play.adtonos.com/zote-przeboje"></audio> <br><br>';
                     echo "<span class='now_playing'>{$now_playing}</span><br><br>";
                     foreach ($data as $song) {
                         echo "
