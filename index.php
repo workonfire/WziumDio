@@ -96,7 +96,7 @@
     ?>
 
 <div class="footer">
-    <p>Created by workonfire</p>
+    Created by <a href="https://github.com/workonfire" id="footerlink">workonfire</a>
 </div>
 
 </body>

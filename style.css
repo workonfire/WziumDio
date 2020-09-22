@@ -85,3 +85,7 @@ input[type=submit] {
     font-weight: bold;
     font-size: 25px;
 }
+
+#footerlink {
+    color: lightgray;
+}
