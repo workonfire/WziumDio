@@ -72,7 +72,7 @@
             function showPlayer($radio_station) {
                 switch ($radio_station) {
                     case "rmf_fm":
-                        $player_link = "http://195.150.20.9/rmf_fm"; break;
+                        $player_link = "https://195.150.20.9/rmf_fm"; break;
                     case "zlote_przeboje":
                         $player_link = "https://pl2-play.adtonos.com/zote-przeboje"; break;
                     default:
