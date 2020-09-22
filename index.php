@@ -72,7 +72,7 @@
             function showPlayer($radio_station) {
                 switch ($radio_station) {
                     case "rmf_fm":
-                        $player_link = "http://31.192.216.8/rmf_fm"; break;
+                        $player_link = "http://195.150.20.9/rmf_fm"; break;
                     case "zlote_przeboje":
                         $player_link = "https://pl2-play.adtonos.com/zote-przeboje"; break;
                     default:
@@ -90,13 +90,14 @@
             if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
                 showPlayer($radio_station);
 
+            echo $now_playing;
             switch ($radio_station) {
                 case "rmf_fm":
                     foreach ($data as $song) {
-                        $song->lenght = $song->lenght != '' ? '⌛ '.gmdate('i:s', $song->lenght) : $song->lenght;
-                        $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
-                        if ($song->order == 0) echo $now_playing;
-                        echo "
+                        if ($song->order >= 0) {
+                            $song->lenght = $song->lenght != '' ? '⌛ ' . gmdate('i:s', $song->lenght) : $song->lenght;
+                            $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
+                            echo "
                             <div class='songinfo'>
                                 <img src='{$song->coverBigUrl}' class='albumart' alt='albumart' />
                                 <div>
@@ -108,11 +109,11 @@
                                 </div>
                             </div>
                             <hr>
-                        ";
+                            ";
+                        }
                     }
                     break;
                 case "zlote_przeboje":
-                    echo $now_playing;
                     foreach ($data as $song) {
                         echo "
                             <div class='songinfo'>
