@@ -38,7 +38,7 @@
                 <option value="zlote_przeboje" <?php
                     if (isset($_GET['radio_station']))
                         echo $_GET['radio_station'] == 'zlote_przeboje' ? 'selected="selected"' : '';
-                ?>>Złote Przeboje</option>
+                ?>>Złote Przeboje Rzeszów</option>
             </select>
         </p>
         <div>
@@ -61,7 +61,7 @@
                 case "rmf_fm":
                     $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt"; break;
                 case "zlote_przeboje":
-                    $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8936"; break;
+                    $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8930"; break;
                 default:
                     $data_link = null;
             }
