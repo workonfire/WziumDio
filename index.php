@@ -2,6 +2,7 @@
 <html lang="pl">
 
 <!-- WziumDio by workonfire -->
+<!-- https://workonfi.re/?project=WziumDio -->
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +11,8 @@
                 switch ($_GET['radio_station']) {
                     case "rmf_fm":
                         $full_radio_name = "RMF FM"; break;
+                    case "rmf_maxxx":
+                        $full_radio_name = "RMF MAXXX"; break;
                     case "zlote_przeboje":
                         $full_radio_name = "Złote Przeboje"; break;
                 }
@@ -35,6 +38,12 @@
                     if (isset($_GET['radio_station']))
                         echo $_GET['radio_station'] == 'rmf_fm' ? 'selected="selected"' : '';
                 ?>>RMF FM</option>
+
+                <option value="rmf_maxxx" <?php
+                if (isset($_GET['radio_station']))
+                    echo $_GET['radio_station'] == 'rmf_maxxx' ? 'selected="selected"' : '';
+                ?>>RMF MAXXX</option>
+
                 <option value="zlote_przeboje" <?php
                     if (isset($_GET['radio_station']))
                         echo $_GET['radio_station'] == 'zlote_przeboje' ? 'selected="selected"' : '';
@@ -60,6 +69,8 @@
             switch ($radio_station) {
                 case "rmf_fm":
                     $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt"; break;
+                case "rmf_maxxx":
+                    $data_link = "https://www.rmfon.pl/stacje/playlista_6.json.txt"; break;
                 case "zlote_przeboje":
                     $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8930"; break;
                 default:
@@ -73,6 +84,8 @@
                 switch ($radio_station) {
                     case "rmf_fm":
                         $player_link = "https://rs6-krk2.rmfstream.pl/RMFFM48"; break;
+                    case "rmf_maxxx":
+                        $player_link = "https://rs6-krk2.rmfstream.pl/RMFMAXXX48"; break;
                     case "zlote_przeboje":
                         $player_link = "https://pl2-play.adtonos.com/zote-przeboje"; break;
                     default:
@@ -93,6 +106,7 @@
             echo $now_playing;
             switch ($radio_station) {
                 case "rmf_fm":
+                case "rmf_maxxx":
                     foreach ($data as $song) {
                         if ($song->order >= 0) {
                             $song->lenght = $song->lenght != '' ? '⌛ ' . gmdate('i:s', $song->lenght) : $song->lenght;

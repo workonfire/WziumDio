@@ -1,8 +1,42 @@
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("assets/JetBrainsMono-Regular.woff2");
+}
+
+@font-face {
+    font-family: "Orange Typewriter";
+    src: url("assets/Orange Typewriter.ttf");
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    src: url("assets/LiberationSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    src: url("assets/LiberationSans-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    src: url("assets/LiberationSans-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Liberation Sans";
+    src: url("assets/LiberationSans-Italic.ttf");
+    font-style: italic;
+}
+
 body {
     background-color: #111111;
     color: white;
-    font-family: "Consolas", serif;
-    font-size: 20px;
+    font-family: "JetBrains Mono", serif;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -13,7 +47,7 @@ hr {
 
 .header {
     text-align: center;
-    font-family: "Courier New", serif;
+    font-family: "Orange Typewriter", serif;
     font-weight: bold;
     font-size: 70px;
 }
@@ -60,7 +94,7 @@ input[type=submit] {
 
 .songinfo {
     font-size: 20px;
-    font-family: "Verdana", serif;
+    font-family: "", serif;
     display: inline-flex;
     text-align: left;
     width: 350px;
