@@ -94,7 +94,7 @@ input[type=submit] {
 
 .songinfo {
     font-size: 20px;
-    font-family: "", serif;
+    font-family: "Liberation Sans", serif;
     display: inline-flex;
     text-align: left;
     width: 350px;
