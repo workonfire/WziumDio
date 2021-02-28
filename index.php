@@ -4,20 +4,16 @@
 <!-- WziumDio by workonfire -->
 <!-- https://workonfi.re/?project=WziumDio -->
 
+<?php
+    require_once "Radio.php";
+    if (isset($_GET['radio_station'])) $radio = new Radio($_GET['radio_station']);
+?>
+
 <head>
     <meta charset="UTF-8">
     <title>WziumDio <?php
-            if (isset($_GET['radio_station'])) {
-                switch ($_GET['radio_station']) {
-                    case "rmf_fm":
-                        $full_radio_name = "RMF FM"; break;
-                    case "rmf_maxxx":
-                        $full_radio_name = "RMF MAXXX"; break;
-                    case "zlote_przeboje":
-                        $full_radio_name = "Złote Przeboje"; break;
-                }
-                echo isset($full_radio_name) ? "- ".$full_radio_name : '';
-            }
+            if (isset($radio)) $full_radio_name = $radio->display_name;
+            echo isset($full_radio_name) ? "- " . $full_radio_name : '';
         ?></title>
     <link rel="icon" type="image/png" href="assets/icon.png"/>
     <link rel="stylesheet" href="style.css">
@@ -34,20 +30,9 @@
         <p id="select_radio">
             <label for="radio_stations">Stacja radiowa:</label>
             <select id="radio_stations" name="radio_station">
-                <option value="rmf_fm" <?php
-                    if (isset($_GET['radio_station']))
-                        echo $_GET['radio_station'] == 'rmf_fm' ? 'selected="selected"' : '';
-                ?>>RMF FM</option>
-
-                <option value="rmf_maxxx" <?php
-                if (isset($_GET['radio_station']))
-                    echo $_GET['radio_station'] == 'rmf_maxxx' ? 'selected="selected"' : '';
-                ?>>RMF MAXXX</option>
-
-                <option value="zlote_przeboje" <?php
-                    if (isset($_GET['radio_station']))
-                        echo $_GET['radio_station'] == 'zlote_przeboje' ? 'selected="selected"' : '';
-                ?>>Złote Przeboje Rzeszów</option>
+                <?php
+                    Radio::showListEntries(isset($radio) ? $radio : null);
+                ?>
             </select>
         </p>
         <div>
@@ -63,87 +48,13 @@
     </form>
 
     <?php
-        if (isset($_GET['radio_station'])) {
-            $radio_station = $_GET['radio_station'];
 
-            switch ($radio_station) {
-                case "rmf_fm":
-                    $data_link = "https://www.rmfon.pl/stacje/playlista_5.json.txt"; break;
-                case "rmf_maxxx":
-                    $data_link = "https://www.rmfon.pl/stacje/playlista_6.json.txt"; break;
-                case "zlote_przeboje":
-                    $data_link = "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8930"; break;
-                default:
-                    $data_link = null;
-            }
+        if (isset($_GET['wanna_listen']) && isset($radio) && $_GET['wanna_listen'] == 'on')
+            $radio->showPlayer();
 
-            $data = json_decode(file_get_contents($data_link));
-            $now_playing = "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
-
-            function showPlayer($radio_station) {
-                switch ($radio_station) {
-                    case "rmf_fm":
-                        $player_link = "https://rs6-krk2.rmfstream.pl/RMFFM48"; break;
-                    case "rmf_maxxx":
-                        $player_link = "https://rs6-krk2.rmfstream.pl/RMFMAXXX48"; break;
-                    case "zlote_przeboje":
-                        $player_link = "https://pl2-play.adtonos.com/zote-przeboje"; break;
-                    default:
-                        $player_link = '';
-                }
-                echo "<audio id='player' controls autoplay src='{$player_link}'></audio> <br><br>";
-                echo "
-                    <script>
-                        let audio = document.getElementById('player');
-                        audio.volume = 0.5;
-                    </script>
-                ";
-            }
-
-            if (isset($_GET['wanna_listen']) && $_GET['wanna_listen'] == 'on')
-                showPlayer($radio_station);
-
-            echo $now_playing;
-            switch ($radio_station) {
-                case "rmf_fm":
-                case "rmf_maxxx":
-                    foreach ($data as $song) {
-                        if ($song->order >= 0) {
-                            $song->lenght = $song->lenght != '' ? '⌛ ' . gmdate('i:s', $song->lenght) : $song->lenght;
-                            $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
-                            echo "
-                            <div class='songinfo'>
-                                <img src='{$song->coverBigUrl}' class='albumart' alt='albumart' />
-                                <div>
-                                    <span class='title'>{$song->title}</span> <br>
-                                    <span class='author'>{$song->author}</span> <br>
-                                    <span class='album'>{$song->recordTitle}</span> <br>
-                                    <span class='length'>{$song->lenght}</span> <br>
-                                    <span class='start'>▶ <b>{$song->start}</b></span> <br>
-                                </div>
-                            </div>
-                            <hr>
-                            ";
-                        }
-                    }
-                    break;
-                case "zlote_przeboje":
-                    foreach ($data as $song) {
-                        echo "
-                            <div class='songinfo'>
-                                <img src='{$song->album_full_image}' class='albumart' alt='albumart' />
-                                <div>
-                                    <span class='title'>{$song->song_title}</span> <br>
-                                    <span class='author'>{$song->artist_name}</span> <br>
-                                    <span class='album'>{$song->album_title}</span> <br>
-                                    <span class='year'>{$song->album_year}</span> <br>
-                                </div>
-                            </div>
-                            <hr>
-                        ";
-                    }
-                    break;
-            }
+        if (isset($radio)) {
+            echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
+            $radio->showPlaylist();
         }
     ?>
 
