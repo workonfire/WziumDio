@@ -59,10 +59,10 @@ hr {
 
 #wzium {
     background: red;
-    background: -webkit-linear-gradient(left, red, orange, yellow, green, cyan, blue, violet);
-    background: -o-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet);
-    background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+    background: -webkit-linear-gradient(left, red, orange, yellow, lightgreen, cyan, lightblue);
+    background: -o-linear-gradient(right, red, orange, yellow, lightgreen, cyan, lightblue);
+    background: -moz-linear-gradient(right, red, orange, yellow, lightgreen, cyan, lightblue);
+    background: linear-gradient(to right, red, orange, yellow, lightgreen, cyan, lightblue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
