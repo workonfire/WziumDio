@@ -6,6 +6,6 @@ Currently supports:
 - RMF FM
 - Radio Złote Przeboje
 
-![Screenshot](https://i.imgur.com/hIfb348.png)
+![Screenshot](https://i.imgur.com/PjbUcTq.png)
 
 Special thanks to [Indexerrowaty](https://github.com/Indexerrowaty) for helping.
