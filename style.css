@@ -79,8 +79,8 @@ hr {
 }
 
 #vinyl {
-    position: absolute;
-    margin-top: 17px;
+    position: relative;
+    bottom: -5px;
     margin-left: -5px;
 }
 
