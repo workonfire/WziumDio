@@ -1,6 +1,6 @@
 <?php
 
-trait ZlotePrzebojePlaylist {
+trait TubaFMPlaylist {
     public function showPlaylist($playlist_data): void {
         foreach ($playlist_data as $song) {
             echo "

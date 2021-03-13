@@ -22,9 +22,9 @@
 
 <body>
     <div class="header">
-        <span id="wzium">Wzium</span><span id="dio">Dio</span>
+        <span id="wzium">Wzium</span><span id="dio">Di</span><img id="vinyl" src="assets/vinyl.png" alt="vinyl">
     </div>
-    <p class="info">📻 Sprawdź, co będzie grane!</p>
+    <p class="info">Sprawdź, co będzie grane!</p>
 
     <form action="index.php" method="get">
         <p id="select_radio">
@@ -58,8 +58,11 @@
         }
     ?>
 
+    <script type="text/javascript" src="scripts/page_autoreload.js"></script>
+
 <div class="footer">
-    Created by <a href="https://github.com/workonfire" id="footerlink">workonfire</a>
+    Stworzono przez <a href="https://github.com/workonfire" id="footerlink">workonfire</a> <br><br>
+    Masz pytania? <a href="faq.html" id="footerlink">Przeczytaj FAQ!</a>
 </div>
 
 </body>

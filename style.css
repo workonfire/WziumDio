@@ -4,6 +4,12 @@
 }
 
 @font-face {
+    font-family: "JetBrains Mono";
+    src: url("assets/JetBrainsMono-Bold.woff2");
+    font-weight: bold;
+}
+
+@font-face {
     font-family: "Orange Typewriter";
     src: url("assets/Orange Typewriter.ttf");
 }
@@ -72,16 +78,29 @@ hr {
     color: white;
 }
 
+#vinyl {
+    position: absolute;
+    margin-top: 17px;
+    margin-left: -5px;
+}
+
 input[type=submit] {
     padding: 5px 15px;
-    background: #277498;
-    border: 0 none;
+    background: #111111;
+    border: 2px solid #646464;
     cursor: pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
     width: 150px;
     height: 50px;
     color: white;
+    font-family: "JetBrains Mono", serif;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 3px -3px #646464, 2px -2px #646464, 1px -1px #646464;
+}
+
+input[type=submit]:hover {
+    background-color: white;
+    color: black;
 }
 
 .albumart {
@@ -127,6 +146,18 @@ input[type=submit] {
     font-size: 25px;
     -webkit-animation: pulsate 2s ease-out;
     -webkit-animation-iteration-count: infinite;
+}
+
+.question-container {
+    margin: 0 auto;
+    max-width: 600px;
+    word-wrap: break-word;
+}
+
+.question {
+    font-family: "JetBrains Mono", serif;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 @-webkit-keyframes pulsate {

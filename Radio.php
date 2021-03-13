@@ -1,21 +1,21 @@
 <?php
 
 require_once "implementations/RMFBasedPlaylist.php";
-require_once "implementations/ZlotePrzebojePlaylist.php";
+require_once "implementations/TubaFMPlaylist.php";
 
 class Radio {
     use RMFBasedPlaylist {
         RMFBasedPlaylist::showPlaylist as protected showRMFPlaylist;
     }
 
-    use ZlotePrzebojePlaylist {
-        ZlotePrzebojePlaylist::showPlaylist as protected showZlotePrzebojePlaylist;
+    use TubaFMPlaylist {
+        TubaFMPlaylist::showPlaylist as protected showTubaFMPlaylist;
     }
 
     public string $id;
     public string $display_name;
     public string $stream_link;
-    public array $playlist_data;
+    public array  $playlist_data;
 
     function __construct($id) {
         $this->id = $id;
@@ -26,24 +26,17 @@ class Radio {
     }
 
     public function showPlayer(): void {
-        echo "<audio id='player' controls autoplay src='{$this->stream_link}'></audio> <br><br>";
-        echo "
-              <script>
-                  let audio = document.getElementById('player');
-                  audio.volume = 0.5;
-              </script>
-              ";
+        echo "<audio id='player' controls src='{$this->stream_link}'></audio> <br><br>";
+        echo "<script type='text/javascript' src='scripts/lower_player_volume.js'></script>";
     }
 
     public function showPlaylist(): void {
         switch ($this->id) {
             case "rmf_fm":
             case "rmf_maxxx":
-                $this->showRMFPlaylist($this->playlist_data);
-                break;
+                $this->showRMFPlaylist($this->playlist_data); break;
             case "zlote_przeboje":
-                $this->showZlotePrzebojePlaylist($this->playlist_data);
-                break;
+                $this->showTubaFMPlaylist($this->playlist_data); break;
         }
     }
 
