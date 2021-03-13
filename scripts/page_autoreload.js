@@ -16,6 +16,6 @@ if (startTimes.length > 0) {
     const timeDiff = timestampDiff(currentTimestamp, secondSongStartTimestamp);
     console.debug("Różnica pomiędzy czasem startu następnej piosenki, a czasem systemowym: " + timeDiff + " s");
     const userListening = new URL(window.location.href).searchParams.get('wanna_listen') === 'on';
-    if ((timeDiff > 5 || timeDiff < -5) && !userListening)
+    if (timeDiff > 5 && !userListening)
         setTimeout(() => window.location.reload(), timeDiff * 1000);
 }
