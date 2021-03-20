@@ -96,6 +96,7 @@ input[type=submit] {
     font-weight: bold;
     font-size: 20px;
     box-shadow: 3px -3px #646464, 2px -2px #646464, 1px -1px #646464;
+    transition: .2s;
 }
 
 input[type=submit]:hover {
@@ -172,6 +173,6 @@ input[type=submit]:hover {
     }
 }
 
-#footerlink {
+.footerlink {
     color: lightgray;
 }

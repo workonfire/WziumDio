@@ -61,8 +61,8 @@
     <script type="text/javascript" src="scripts/page_autoreload.js"></script>
 
 <div class="footer">
-    Stworzono przez <a href="https://github.com/workonfire" id="footerlink">workonfire</a> <br><br>
-    Masz pytania? <a href="faq.html" id="footerlink">Przeczytaj FAQ!</a>
+    Stworzono przez <a href="https://workonfi.re" class="footerlink">workonfire</a> <br><br>
+    Masz pytania? <a href="faq.html" class="footerlink">Przeczytaj FAQ!</a>
 </div>
 
 </body>
