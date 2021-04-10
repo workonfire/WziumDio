@@ -1,21 +1,16 @@
 <?php
 
-require_once "implementations/RMFBasedPlaylist.php";
-require_once "implementations/TubaFMPlaylist.php";
+require_once "playlists/Playlist.php";
+require_once "playlists/RMFPlaylist.php";
+require_once "playlists/TubaFMPlaylist.php";
 
 class Radio {
-    use RMFBasedPlaylist {
-        RMFBasedPlaylist::showPlaylist as protected showRMFPlaylist;
-    }
 
-    use TubaFMPlaylist {
-        TubaFMPlaylist::showPlaylist as protected showTubaFMPlaylist;
-    }
-
-    public string $id;
-    public string $display_name;
-    public string $stream_link;
-    public array  $playlist_data;
+    public string   $id;
+    public string   $display_name;
+    public string   $stream_link;
+    public array    $playlist_data;
+    public Playlist $playlist;
 
     function __construct($id) {
         $this->id = $id;
@@ -23,21 +18,22 @@ class Radio {
         $data = json_decode(file_get_contents("sources.json"));
         $this->stream_link = $data->streams->$id;
         $this->playlist_data = json_decode(file_get_contents($data->playlists->$id));
+        $this->createPlaylist();
+    }
+
+    private function createPlaylist(): void {
+        switch ($this->id) {
+            case "rmf_fm":
+            case "rmf_maxxx":
+                $this->playlist = new RMFPlaylist($this->playlist_data); break;
+            case "zlote_przeboje":
+                $this->playlist = new TubaFMPlaylist($this->playlist_data); break;
+        }
     }
 
     public function showPlayer(): void {
         echo "<audio id='player' controls src='{$this->stream_link}'></audio> <br><br>";
         echo "<script type='text/javascript' src='scripts/lower_player_volume.js'></script>";
-    }
-
-    public function showPlaylist(): void {
-        switch ($this->id) {
-            case "rmf_fm":
-            case "rmf_maxxx":
-                $this->showRMFPlaylist($this->playlist_data); break;
-            case "zlote_przeboje":
-                $this->showTubaFMPlaylist($this->playlist_data); break;
-        }
     }
 
     public static function showListEntries(?Radio $radio): void {

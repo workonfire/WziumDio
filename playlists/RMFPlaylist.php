@@ -1,8 +1,15 @@
 <?php
 
-trait RMFBasedPlaylist {
-    public function showPlaylist($playlist_data): void {
-        foreach ($playlist_data as $song) {
+
+class RMFPlaylist implements Playlist {
+    private array $playlist_data;
+
+    function __construct($playlist_data) {
+        $this->playlist_data = $playlist_data;
+    }
+
+    public function show(): void {
+        foreach ($this->playlist_data as $song) {
             if ($song->order >= 0) {
                 $song->lenght = $song->lenght != '' ? '⌛ ' . gmdate('i:s', $song->lenght) : $song->lenght;
                 $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;

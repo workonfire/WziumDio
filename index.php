@@ -54,7 +54,7 @@
 
         if (isset($radio)) {
             echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
-            $radio->showPlaylist();
+            $radio->playlist->show();
         }
     ?>
 
