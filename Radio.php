@@ -6,11 +6,11 @@ require_once "playlists/TubaFMPlaylist.php";
 
 class Radio {
 
-    public string   $id;
-    public string   $display_name;
-    public string   $stream_link;
-    public array    $playlist_data;
-    public Playlist $playlist;
+    public string    $id;
+    public string    $display_name;
+    public string    $stream_link;
+    public array     $playlist_data;
+    public ?Playlist $playlist;
 
     function __construct($id) {
         $this->id = $id;
@@ -18,16 +18,18 @@ class Radio {
         $data = json_decode(file_get_contents("sources.json"));
         $this->stream_link = $data->streams->$id;
         $this->playlist_data = json_decode(file_get_contents($data->playlists->$id));
-        $this->createPlaylist();
+        $this->playlist = $this->createPlaylist();
     }
 
-    private function createPlaylist(): void {
+    private function createPlaylist(): ?Playlist {
         switch ($this->id) {
             case "rmf_fm":
             case "rmf_maxxx":
-                $this->playlist = new RMFPlaylist($this->playlist_data); break;
+                return new RMFPlaylist($this->playlist_data);
             case "zlote_przeboje":
-                $this->playlist = new TubaFMPlaylist($this->playlist_data); break;
+                return new TubaFMPlaylist($this->playlist_data);
+            default:
+                return null;
         }
     }
 
