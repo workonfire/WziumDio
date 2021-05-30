@@ -1,0 +1,9 @@
+{
+    "require": {
+        "simivar/genius-php": "^2.1",
+        "php-http/message": "^1.11",
+        "php-http/guzzle6-adapter": "^2.0",
+      "ext-json": "*",
+        "voku/simple_html_dom": "^4.7"
+    }
+}

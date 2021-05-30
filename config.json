@@ -1,0 +1,20 @@
+{"config": {
+    "aliases": {
+      "rmf_fm": "RMF FM",
+      "rmf_maxxx": "RMF MAXXX",
+      "zlote_przeboje": "Złote Przeboje Rzeszów"
+    },
+    "sources": {
+      "playlists": {
+        "rmf_fm": "https://www.rmfon.pl/stacje/playlista_5.json.txt",
+        "rmf_maxxx": "https://www.rmfon.pl/stacje/playlista_6.json.txt",
+        "zlote_przeboje": "https://ssl.static.fm.tuba.pl/api3/onStation?format=json&id=8930"
+      },
+      "streams": {
+        "rmf_fm": "https://rs6-krk2.rmfstream.pl/RMFFM48",
+        "rmf_maxxx": "https://rs6-krk2.rmfstream.pl/RMFMAXXX48",
+        "zlote_przeboje": "https://pl2-play.adtonos.com/zote-przeboje"
+      }
+    }
+  }
+}

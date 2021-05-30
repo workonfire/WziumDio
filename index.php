@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -27,12 +28,14 @@
     </div>
     <p class="info">Sprawdź, co będzie grane!</p>
 
+    <script type="text/javascript" src="scripts/show_song_menu.js"></script>
+
     <form action="index.php" method="get">
         <p id="select_radio">
             <label for="radio_stations">Stacja radiowa:</label>
             <select id="radio_stations" name="radio_station">
                 <?php
-                    Radio::showListEntries(isset($radio) ? $radio : null);
+                    Radio::showListEntries($radio ?? null);
                 ?>
             </select>
         </p>
