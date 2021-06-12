@@ -11,6 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/07fe25146f.js" crossorigin="anonymous"></script>
     <title>WziumDio <?php
             if (isset($radio)) $full_radio_name = $radio->display_name;
             echo isset($full_radio_name) ? "- " . $full_radio_name : '';
@@ -32,7 +33,7 @@
             <label for="radio_stations">Stacja radiowa:</label>
             <select id="radio_stations" name="radio_station">
                 <?php
-                    Radio::showListEntries(isset($radio) ? $radio : null);
+                    Radio::showListEntries($radio ?? null);
                 ?>
             </select>
         </p>
@@ -54,7 +55,7 @@
             $radio->showPlayer();
 
         if (isset($radio)) {
-            echo "<span class='now_playing'>▶ TERAZ GRANE</span><br><br>";
+            echo "<span class='now_playing'><i class='fas fa-music'></i> TERAZ GRANE</span><br><br>";
             $radio->playlist->show();
         }
     ?>
