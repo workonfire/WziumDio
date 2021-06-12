@@ -12,7 +12,7 @@ class RMFPlaylist implements Playlist {
         foreach ($this->playlist_data as $song) {
             if ($song->order >= 0) {
                 $song->lenght = $song->lenght != ''
-                    ? '<i class="fas fa-clock"></i> ' . gmdate('i:s', $song->lenght)
+                    ? '<i class="fas fa-play-circle"></i> ' . gmdate('i:s', $song->lenght)
                     : $song->lenght;
                 if ($song->author == "FAKTY RMF FM") {
                     $song->title = "FAKTY";
@@ -31,7 +31,7 @@ class RMFPlaylist implements Playlist {
                               <span class='author'>$song->author</span> <br>
                               <span class='album'>$song->recordTitle</span> <br>
                               <span class='length'>$song->lenght</span> <br>
-                              <span class='start'><i class='fas fa-play-circle'></i> <b>$song->start</b></span> <br>
+                              <span class='start'><i class='fas fa-clock'></i> <b>$song->start</b></span> <br>
                           </div>
                       </div>
                       <hr>
