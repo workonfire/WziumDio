@@ -24,7 +24,7 @@ class RMFPlaylist implements Playlist {
                 }
                 else $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
                 echo "
-                      <div class='song-info-background' style='background: url($song->coverUrl) no-repeat; background-size: cover'>
+                      <div class='song-info-background' style='background: url($song->coverBigUrl) no-repeat; background-size: cover'>
                       <div class='song-info'>
                       <img src='$song->coverBigUrl' class='album-art' alt='Okładka albumu' />
                           <div>

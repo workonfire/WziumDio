@@ -1,10 +1,10 @@
 # WziumDio
 
-A simple radio client for checking the song playlist.
+A simple radio playlist client for Polish radio stations.
 
 Currently supports:
-  - RMF FM
-  - RMF MAXXX
-  - Złote Przeboje
+  - [RMF FM](https://www.rmf.fm/)
+  - [RMF MAXXX](https://www.rmfmaxx.pl/)
+  - [Złote Przeboje](https://zloteprzeboje.pl/)
 
 ![Screenshot](https://i.imgur.com/xypeIku.png)
