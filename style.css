@@ -90,6 +90,7 @@ select {
     backdrop-filter: blur(10px) brightness(40%);
     padding: 15px;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0 25px 20px -20px;
 }
 
 .title, .author {
