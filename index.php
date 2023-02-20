@@ -17,55 +17,46 @@
             echo isset($full_radio_name) ? "- " . $full_radio_name : '';
         ?></title>
     <link rel="icon" type="image/png" href="assets/icon.png"/>
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <div class="header">
-        <span id="wzium">Wzium</span><span id="dio">Di</span><img id="vinyl" src="assets/vinyl.png" alt="vinyl">
-    </div>
-    <p class="info">Sprawdź, co będzie grane!</p>
+    <header>
+        <span id="wzium">wzium</span><span id="dio">dio</span>
+    </header>
 
     <form action="index.php" method="get">
-        <p id="select_radio">
-            <label for="radio_stations">Stacja radiowa:</label>
-            <select id="radio_stations" name="radio_station">
+        <p id="select-radio">
+            <label for="radio-stations">Stacja radiowa:</label>
+            <select id="radio-stations" name="radio_station">
                 <?php
                     Radio::showListEntries($radio ?? null);
                 ?>
             </select>
         </p>
-        <div>
-            <input type="checkbox" id="wanna_listen" name="wanna_listen"
-                <?php
-                    echo isset($_GET['wanna_listen']) ? 'checked="checked"' : '';
-                ?>>
-            <label for="wanna_listen">Chcę posłuchać!</label>
-        </div>
-        <br>
-        <input type="submit" value="Sprawdź!">
+        <button type="submit" class="mdc-button mdc-button--raised mdc-button--leading">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">
+                queue_music
+            </i>
+            <span class="mdc-button__label">Sprawdź playlistę</span>
+        </button>
         <br> <br>
     </form>
 
     <?php
-
-        if (isset($_GET['wanna_listen']) && isset($radio) && $_GET['wanna_listen'] == 'on')
-            $radio->showPlayer();
-
-        if (isset($radio)) {
-            echo "<span class='now_playing'><i class='fas fa-music'></i> TERAZ GRANE</span><br><br>";
-            $radio->playlist->show();
-        }
+        if (isset($radio)) $radio->playlist->show();
     ?>
 
-    <script type="text/javascript" src="scripts/page_autoreload.js"></script>
-
-<div class="footer">
-    Stworzono przez <a href="https://workonfi.re" class="footerlink">workonfire</a> <br><br>
-    Masz pytania? <a href="faq.html" class="footerlink">Przeczytaj FAQ!</a>
-</div>
+    <footer>
+        Stworzono przez <a href="https://workonfi.re">workonfire</a> <br><br>
+    </footer>
 
 </body>
 

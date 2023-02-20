@@ -11,8 +11,9 @@ class TubaFMPlaylist implements Playlist {
     public function show(): void {
         foreach ($this->playlist_data as $song) {
             echo "
-                 <div class='songinfo'>
-                     <img src='$song->album_full_image' class='albumart' alt='albumart' />
+                 <div class='song-info-background' style='background: url($song->album_full_image) no-repeat; background-size: cover'>
+                 <div class='song-info'>
+                     <img src='$song->album_full_image' class='album-art' alt='album-art' />
                      <div>
                          <span class='title'>$song->song_title</span> <br>
                          <span class='author'>$song->artist_name</span> <br>
@@ -20,7 +21,8 @@ class TubaFMPlaylist implements Playlist {
                          <span class='year'>$song->album_year</span> <br>
                      </div>
                  </div>
-                 <hr>
+                 </div>
+                 <br> <br>
                  ";
         }
     }

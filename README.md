@@ -8,5 +8,3 @@ Currently supports:
   - Złote Przeboje
 
 ![Screenshot](https://i.imgur.com/xypeIku.png)
-
-Special thanks to [Indexerrowaty](https://github.com/Indexerrowaty) for helping.

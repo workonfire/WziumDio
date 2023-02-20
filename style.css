@@ -1,26 +1,38 @@
 body {
-    background-color: #111111;
+    --background-color: #222831;
+    --secondary-color: #393E46;
+    background-color: var(--background-color);
     color: white;
-    font-family: "JetBrains Mono", serif;
+    font-family: "Varela Round", serif;
     font-size: 18px;
     text-align: center;
+    --mdc-theme-primary: var(--secondary-color);
+    --mdc-theme-on-primary: var(--mdc-theme-text-primary-on-dark);
 }
 
-hr {
-    border-color: #484848;
-    width: 350px;
-}
-
-.header {
-    text-align: center;
-    font-family: "Orange Typewriter", serif;
+header {
+    font-family: "Dela Gothic One", serif;
     font-weight: bold;
     font-size: 60px;
+    text-align: center;
 }
 
-.info {
-    font-style: italic;
-    color: #9b9b9b;
+a {
+    text-decoration: none;
+    color: lightgray;
+    transition: .2s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+select {
+    background-color: var(--secondary-color);
+    border: 0;
+    color: white;
+    font-size: 90%;
+    border-radius: 5px;
 }
 
 #wzium {
@@ -38,101 +50,51 @@ hr {
     color: white;
 }
 
-#vinyl {
-    position: relative;
-    bottom: -5px;
-    margin-left: -5px;
-}
-
-input[type=submit] {
-    padding: 5px 15px;
-    background: #111111;
-    border: 2px solid #646464;
-    cursor: pointer;
-    width: 150px;
-    height: 50px;
-    color: white;
-    font-family: "JetBrains Mono", serif;
-    font-weight: bold;
-    font-size: 20px;
-    box-shadow: 3px -3px #646464, 2px -2px #646464, 1px -1px #646464;
-    transition: .2s;
-}
-
-input[type=submit]:hover {
-    background-color: white;
-    color: black;
-}
-
-.albumart {
+.album-art {
     width: 125px;
     min-width: auto;
     min-height: auto;
-    object-fit: scale-down;
-    margin-right: 10px;
+    max-height: 125px;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: .5s;
 }
 
-.songinfo {
+@media screen and (min-width: 400px) {
+    .song-info {
+        width: 350px;
+    }
+}
+
+.song-info-background {
     font-size: 20px;
-    font-family: "Liberation Sans", serif;
     display: inline-flex;
     text-align: left;
-    width: 350px;
     word-wrap: break-word;
+    /* background-color: var(--secondary-color); */
+    /* padding: 15px;
+    /*border: var(--secondary-color) solid;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
 }
 
-.title {
+.song-info {
+    display: inherit;
+    backdrop-filter: blur(10px) brightness(40%);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.title, .author {
     font-weight: bold;
 }
 
-.author {
-    font-style: italic;
-    font-weight: bold;
-    color: #9b9b9b;
-}
-
-.album {
+.author, .album {
     font-style: italic;
     color: #9b9b9b;
 }
 
-.footer {
+footer {
     color: #5d5d5d;
-}
-
-.now_playing {
-    color: lime;
-    font-weight: bold;
-    font-family: "Liberation Sans", serif;
-    font-size: 25px;
-    -webkit-animation: pulsate 2s ease-out;
-    -webkit-animation-iteration-count: infinite;
-}
-
-.question-container {
-    margin: 0 auto;
-    max-width: 600px;
-    word-wrap: break-word;
-}
-
-.question {
-    font-family: "JetBrains Mono", serif;
-    font-weight: bold;
-    font-size: 25px;
-}
-
-@-webkit-keyframes pulsate {
-    0% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1.0;
-    }
-    100% {
-        opacity: 0.5;
-    }
-}
-
-.footerlink {
-    color: lightgray;
 }

@@ -37,3 +37,15 @@
     src: url("assets/LiberationSans-Italic.ttf");
     font-style: italic;
 }
+
+@font-face {
+    font-family: "Dela Gothic One";
+    src: url("assets/DelaGothicOne-Regular.ttf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Varela Round";
+    src: url("assets/VarelaRound-Regular.ttf");
+    font-style: italic;
+}

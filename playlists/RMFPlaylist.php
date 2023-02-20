@@ -18,14 +18,15 @@ class RMFPlaylist implements Playlist {
                     $song->title = "FAKTY";
                     $song->author = "RMF FM";
                     $song->coverBigUrl = "assets/fakty_rmf_fm.jpg";
-                    $song->recordTitle = "<a href='https://www.rmf24.pl/fakty' class='footerlink'>Kliknij</a>, 
+                    $song->recordTitle = "<a href='https://www.rmf24.pl/fakty'>Kliknij</a>,
                                           aby poczytać";
                     $song->lenght = '<i class="fas fa-hourglass-half"></i> 2-5 min';
                 }
                 else $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
                 echo "
-                      <div class='songinfo'>
-                      <img src='$song->coverBigUrl' class='albumart' alt='albumart' />
+                      <div class='song-info-background' style='background: url($song->coverUrl) no-repeat; background-size: cover'>
+                      <div class='song-info'>
+                      <img src='$song->coverBigUrl' class='album-art' alt='Okładka albumu' />
                           <div>
                               <span class='title'>$song->title</span> <br>
                               <span class='author'>$song->author</span> <br>
@@ -34,7 +35,8 @@ class RMFPlaylist implements Playlist {
                               <span class='start'><i class='fas fa-clock'></i> <b>$song->start</b></span> <br>
                           </div>
                       </div>
-                      <hr>
+                      </div>
+                      <br> <br>
                       ";
             }
         }
