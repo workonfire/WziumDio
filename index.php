@@ -52,6 +52,7 @@
 
     <?php
         if (isset($radio)) $radio->playlist->show();
+        else echo "<p>Nie wybrano żadnej stacji radiowej.</p>";
     ?>
 
     <footer>
