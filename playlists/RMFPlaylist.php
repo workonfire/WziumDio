@@ -23,6 +23,8 @@ class RMFPlaylist implements Playlist {
                     $song->lenght = '<i class="fas fa-hourglass-half"></i> 2-5 min';
                 }
                 else $song->coverBigUrl = $song->coverUrl == '' ? "assets/default.png" : $song->coverBigUrl;
+                $song_start_time_raw = explode(':', $song->start);
+                $song_start_time = $song_start_time_raw[0] . ":" . $song_start_time_raw[1];
                 echo "
                       <div class='song-info-background' style='background: url($song->coverBigUrl) no-repeat; background-size: cover'>
                       <div class='song-info'>
@@ -31,8 +33,10 @@ class RMFPlaylist implements Playlist {
                               <span class='title'>$song->title</span> <br>
                               <span class='author'>$song->author</span> <br>
                               <span class='album'>$song->recordTitle</span> <br>
-                              <span class='length'>$song->lenght</span> <br>
-                              <span class='start'><i class='fas fa-clock'></i> <b>$song->start</b></span> <br>
+                              <p>
+                                  <span class='start'><i class='fas fa-clock'></i> <b>$song_start_time</b></span> &nbsp;
+                                  <span class='length'>$song->lenght</span>
+                              </p>
                           </div>
                       </div>
                       </div>

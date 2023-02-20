@@ -7,4 +7,4 @@ Currently supports:
   - [RMF MAXXX](https://www.rmfmaxx.pl/)
   - [Złote Przeboje](https://zloteprzeboje.pl/)
 
-![Screenshot](https://i.imgur.com/xypeIku.png)
+![Screenshot](https://i.imgur.com/myoTKBB.png)

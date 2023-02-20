@@ -32,7 +32,7 @@
     </header>
 
     <form action="index.php" method="get">
-        <p id="select-radio">
+        <p class="select-radio">
             <label for="radio-stations">Stacja radiowa:</label>
             <select id="radio-stations" name="radio_station">
                 <?php

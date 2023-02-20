@@ -28,6 +28,14 @@ a:hover {
     text-decoration: underline;
 }
 
+p {
+    margin: 0;
+}
+
+.select-radio {
+    margin: 20px;
+}
+
 select {
     background-color: var(--secondary-color);
     border: 0;
@@ -99,8 +107,15 @@ select {
 }
 
 .author, .album {
-    font-style: italic;
     color: #9b9b9b;
+}
+
+.author {
+    font-size: 80%;
+}
+
+.album, .length, .start, .year {
+    font-size: 70%;
 }
 
 footer {
